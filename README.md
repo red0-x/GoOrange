@@ -2,6 +2,9 @@
  Generate Worksheets to Practice Mandarin!
  - Written in GoLang with fpdf  
 
+## Usage 
+<img width="570" height="320" alt="usage-goOrange" src="https://github.com/user-attachments/assets/b6ce657e-ee0e-4d5d-a70a-d37b55558f4c" />
+
 ## 12/23/2025
  - Created Repo
  - Created Menu
