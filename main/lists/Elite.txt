@@ -1,0 +1,4 @@
+// Pipe format for lists Example
+
+English|Hanzi|Pinyin
+Hello|你好|nǐ hǎo
