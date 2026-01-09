@@ -5,7 +5,9 @@
 ## Usage 
 <img width="570" height="320" alt="usage-goOrange" src="https://github.com/user-attachments/assets/b6ce657e-ee0e-4d5d-a70a-d37b55558f4c" />
 
-## 12/23/2025
+## Progress
+
+#### 12/23/2025
  - Created Repo
  - Created Menu
  - Implemented Basic PDF Generation
@@ -16,7 +18,7 @@
  - Added Lists Folder
    - It contains .txt files with vocabulary and examples in pipe format.
 
-## 1/9/2026
+#### 1/9/2026
 - Added List scanning
 - Parse the Pipe format within lists to gather all rows.
 - Minor Menu Changes/Text Modificfations
