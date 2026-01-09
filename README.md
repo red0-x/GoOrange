@@ -14,13 +14,17 @@
  - Added Core Function/Structure
  - Added fpdf and ansi coloring modules
  - Added Lists Folder
-   - It contains .txt files with vocabulary and examples in pipe format. 
+   - It contains .txt files with vocabulary and examples in pipe format.
+
+## 1/9/2026
+- Added List scanning
+- Parse the Pipe format within lists to gather all rows.
+- Minor Menu Changes/Text Modificfations
+- Created ListUtils Module and Branch used for Modifying, Viewing and Adding to Lists which will be used for creating worksheets. 
   
 
 ### Road Map
 
 - Customize Worksheets with specific difficulty levels or vocabulary (ex. Beginner, Intermediate and Advanced or Food, Travel, Introductions)
-- Customizable Character Lists and Difficulties 
-- Customizable Design (CSS/Tailwind Maybe?)
-- WebUI Integration 
+- Customizable Character Lists, with varying dificulty and customizable problem types. (ex. Hanzi-Pinyin, English-Hanzi, Pinyin-Enlish)  
 - Translation API to gather and customize lists
