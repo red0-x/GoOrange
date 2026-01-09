@@ -1,4 +1,20 @@
 // Pipe format for lists Example
 
-English|Hanzi|Pinyin
-Hello|你好|nǐ hǎo
+//Type is the question type, EP would be English to Pinyin
+// Ex. Hello in pinyin is [ANSWER] (nǐ hǎo)
+
+// HP is Hanzi to Pinyin 
+// Ex. 你好 in pinyin is [ANSWER] (nǐ hǎo)
+
+// EH is English to Hanzi
+// Ex. Write Hello as a Hanzi (Chinese Charecter) Customizeable number of Boxes with opaque outline with [ANSWER] (你好)
+
+// This can be customized within GoOrange through the customize questions option. 
+
+English|Hanzi|Pinyin|Type
+Hello|你好|nǐ hǎo|EP
+Hello|你好|nǐ hǎo|PE
+Hello|你好|nǐ hǎo|HP
+Hello|你好|nǐ hǎo|EH 
+Hello|你好|nǐ hǎo|PH
+Hello|你好|nǐ hǎo|HP  

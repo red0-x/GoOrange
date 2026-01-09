@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	listutils "listutils/m/v2"
+	"os"
 	"time"
 
 	"codeberg.org/go-pdf/fpdf"
@@ -30,9 +32,8 @@ func menu() {
 ⠀⠀⠀⠙⠷⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣐⣥⠟⠋⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠈⠉⠛⠶⠶⠦⠤⠶⣶⠾⠛⠋⠁`)
 	color.Yellow(`
-[1] Generate List
-[2] Select Question Types 
-[3] Generate PDF
+[1] Customize Questions [WIP Not Functional]
+[2] Generate PDF [WIP Not Functional]
 	  			`)
 	color.Red("\nChoose an option.")
 	var option int
@@ -41,35 +42,80 @@ func menu() {
 	case 1:
 		listgen()
 	case 2:
-		questionselection()
-	case 3:
 		pdfgen()
 	default:
-		color.Red("Choose an Option from 1-3!")
-		time.Sleep(2)
+		color.Red("[!] Choose an Option from 1-2!")
+		time.Sleep(2 * time.Second)
 		menu()
 	}
 }
 
-func listgen() {
-	fmt.Println("Work in progress!")
+func wordlistSelect(listdir string) string {
+	dirs, err := os.ReadDir(listdir)
+	if err != nil {
+		fmt.Println("[!] Err reading wordlist /lists folder, any contents?:", err)
+		return "lists/Easy.txt"
+	}
+	for i, dir := range dirs {
+		fmt.Printf("[%d] %s\n", i+1, dir.Name())
+	}
+	var listChoice int
+	fmt.Scan(&listChoice)
+	var selectedList string
+	selectedList = dirs[listChoice-1].Name()
+	wlPath := "./lists/" + selectedList
+	return wlPath
 }
 
-func questionselection() {
-	fmt.Println("Work in progress!")
+func listgen() {
+	color.Yellow("\n[?] Choose a wordlist to customize:")
+
+	entries, err := listutils.ReadList(wordlistSelect("./lists/"))
+	fmt.Print("\n")
+	if err != nil {
+		fmt.Println("\n[!] Error reading list:", err)
+		return
+	}
+	color.Green("\n[i] Parsed:")
+	for i, e := range entries {
+		fmt.Printf("[%d] ", i+1)
+		for k, v := range e {
+			fmt.Printf("%s=%s ", k, v)
+		}
+		fmt.Println()
+	}
+	color.Green("\n[!] Feature WIP.")
 }
 
 func pdfgen() {
+	color.Yellow("\n[?] Choose a WordList:\n")
+	entries, err := listutils.ReadList(wordlistSelect("./lists/"))
+	if err != nil {
+		fmt.Println("\n[!] Error reading list:", err)
+		return
+	}
+	color.Yellow("[i] Preview of entries:")
+	for i, e := range entries {
+		if i >= 5 {
+			break
+		}
+		fmt.Printf("[%d] ", i+1)
+		for k, v := range e {
+			fmt.Printf("%s=%s ", k, v)
+		}
+		fmt.Println()
+	}
+	_ = entries
+
 	var fname string = "orange.pdf"
 	var contents string = "Go Orange!"
-	fmt.Println("Work in progress!")
 	pdf := fpdf.New("P", "mm", "A4", "")
 	pdf.AddPage()
 	pdf.SetFont("Arial", "B", 16)
 	pdf.Cell(40, 10, contents)
 
-	err := pdf.OutputFileAndClose(fname)
-	if err != nil {
-		fmt.Println("Error Creating PDF")
+	if err := pdf.OutputFileAndClose(fname); err != nil {
+		fmt.Println("[!] Error Creating PDF")
 	}
+	color.Green("\n[!] Feature WIP, so far this doesn't create a full PDF.")
 }
